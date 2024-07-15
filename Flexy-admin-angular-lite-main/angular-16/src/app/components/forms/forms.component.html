@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="mb-32">User Registration</h4>
+    <form>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Employee Name</mat-label>
+        <input matInput type="text" placeholder="Enter your Name">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Employee ID</mat-label>
+        <input matInput type="text" placeholder="Enter your ID">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Birthdate</mat-label>
+        <input matInput type="date" placeholder="DD-MM-YYYY">
+      </mat-form-field>
+
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput type="number" placeholder="Enter your Mobile Number">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter your email">
+      </mat-form-field>
+
+     
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput rows="4" placeholder="Write your Addrerss" value=""></textarea>
+      </mat-form-field>
+
+      <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
+        <mat-label class="text-secondary">Gender</mat-label>
+        <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Female</mat-radio-button>
+        <mat-radio-button value="2" class="d-block mb-16">Male</mat-radio-button>
+        <mat-radio-button value="3" class="d-block mb-36">Other</mat-radio-button>
+      </mat-radio-group>
+ 
+      <!-- <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Working Start Time</mat-label>
+        <input matInput type="number" placeholder="Start Time">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Working End Time</mat-label>
+        <input matInput type="number" placeholder="End Time">
+      </mat-form-field> -->
+
+      <button mat-button class="btn btn-info fw-normal" (click)="onBack()" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
