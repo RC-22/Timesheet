@@ -31,19 +31,25 @@ export class FullComponent {
   sidebarMenu: sidebarMenu[] = [
     {
       link: "/home",
-      icon: "layout",
-      menu: "Dashboard",
-    },
-    {
-      link: "/button",
-      icon: "disc",
-      menu: "Project Creation",
+      icon: "calendar",
+      menu: "Monthly report",
     },
     {
       link: "/forms",
-      icon: "layout",
+      icon: "file-text",
       menu: "User Registration",
     },
+    {
+      link: "/button",
+      icon: "layout",
+      menu: "Project Creation",
+    },
+    {
+      link: "/chips",
+      icon: "settings",
+      menu: "Project Module Creation",
+    },
+    
     // {
     //   link: "/alerts",
     //   icon: "info",
@@ -69,11 +75,7 @@ export class FullComponent {
   //     icon: "divide-circle",
   //     menu: "Expansion Panel",
   //   },
-  //   {
-  //     link: "/chips",
-  //     icon: "award",
-  //     menu: "Chips",
-  //   },
+    
   //   {
   //     link: "/tabs",
   //     icon: "list",
