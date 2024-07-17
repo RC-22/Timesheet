@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AlertsComponent } from './alerts/alerts.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
-import { FormsComponent } from './forms/forms.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { DemoFlexyModule } from '../demo-flexy-module';
-import { GridListComponent } from './grid-list/grid-list.component';
-import { MenuComponent } from './menu/menu.component';
+import { loginComponent } from './login/login.component';
+import { timesheetComponent } from './timesheet/timesheet.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ExpansionComponent } from './expansion/expansion.component';
-import { ChipsComponent } from './chips/chips.component';
+import { moduleComponent } from './module/module.component';
 import { ProgressComponent } from './progress/progress.component';
 import { FormsModule } from '@angular/forms';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -17,7 +17,7 @@ import { ProgressSnipperComponent } from './progress-snipper/progress-snipper.co
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { projectComponent } from './project/project.component';
 import { TooltipsComponent } from './tooltips/tooltips.component'
 
 
@@ -26,38 +26,38 @@ import { TooltipsComponent } from './tooltips/tooltips.component'
     CommonModule,
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
-    ButtonsComponent,
+    projectComponent,
     SlideToggleComponent,
     SliderComponent,
     ToolbarComponent,
     ProgressSnipperComponent,
     SnackbarComponent,
-    MenuComponent,
+    timesheetComponent,
     TabsComponent,
     ExpansionComponent,
-    ChipsComponent,
+    moduleComponent,
     ProgressComponent,
-    FormsComponent,
+    RegistrationComponent,
     AlertsComponent,
-    GridListComponent,
+    loginComponent,
     TooltipsComponent,
     FormsModule
   ],
   exports: [
     AlertsComponent,
-    FormsComponent,
-    GridListComponent,
-    MenuComponent,
+    RegistrationComponent,
+    loginComponent,
+    timesheetComponent,
     TabsComponent,
     ExpansionComponent,
-    ChipsComponent,
+    moduleComponent,
     ProgressComponent,
     ToolbarComponent,
     ProgressSnipperComponent,
     SnackbarComponent,
     SliderComponent,
     SlideToggleComponent,
-    ButtonsComponent,
+    projectComponent,
   ]
 })
 export class ComponentsModule { }

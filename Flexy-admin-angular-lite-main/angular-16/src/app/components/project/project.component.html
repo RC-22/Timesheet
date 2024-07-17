@@ -5,11 +5,17 @@
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Project Name</mat-label>
         <input matInput type="text" placeholder="Enter Project Name">
+        <mat-error *ngIf="projectForm.get('projectName').hasError('required') && (projectForm.get('projectName').dirty || projectForm.get('projectName').touched)">
+          Project Name is required
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Project Creation Date</mat-label>
         <input matInput type="date" placeholder="">
+        <mat-error *ngIf="projectForm.get('creationDate').hasError('required') && (projectForm.get('creationDate').dirty || projectForm.get('creationDate').touched)">
+          Creation Date is required
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
@@ -20,23 +26,24 @@
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Due Date</mat-label>
         <input matInput type="date" placeholder="">
+        <mat-error *ngIf="projectForm.get('dueDate').hasError('required') && (projectForm.get('dueDate').dirty || projectForm.get('dueDate').touched)">
+          Due Date is required
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Client Name</mat-label>
         <input matInput type="text" placeholder="Enter Client Name">
-      </mat-form-field>
 
-      
+      </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Note</mat-label>
         <textarea matInput rows="3" placeholder="" value=""></textarea>
       </mat-form-field>
 
-      <button mat-button class="btn btn-info fw-normal" type="submit" >Submit</button>
+      <button mat-button class="btn btn-info fw-normal" type="submit" > Submit </button>
     </form>
   </div>
 </div>
-
 

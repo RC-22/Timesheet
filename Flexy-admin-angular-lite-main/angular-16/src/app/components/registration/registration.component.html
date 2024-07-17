@@ -14,13 +14,14 @@
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Birthdate</mat-label>
-        <input matInput type="date" placeholder="DD-MM-YYYY">
+        <input matInput type="date" >
       </mat-form-field>
 
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Mobile Number</mat-label>
         <input matInput type="number" placeholder="Enter your Mobile Number">
+       
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
@@ -36,8 +37,8 @@
 
       <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
         <mat-label class="text-secondary">Gender</mat-label>
-        <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Male</mat-radio-button>
-        <mat-radio-button value="2" class="d-block mb-16">Female</mat-radio-button>
+        <mat-radio-button value="1" class="mt-8 mb-16 d-block" checked="checked" >Male</mat-radio-button>
+        <mat-radio-button value="2" class="d-block mb-16" >Female</mat-radio-button>
         <mat-radio-button value="3" class="d-block mb-36">Other</mat-radio-button>
       </mat-radio-group>
  
@@ -51,9 +52,7 @@
         <input matInput type="number" placeholder="End Time">
       </mat-form-field> -->
 
-      <button mat-button class="btn btn-info fw-normal" (click)="onBack()" type="submit">Submit</button>
+      <button mat-button class="btn btn-info fw-normal" type="submit" >Submit</button>
     </form>
   </div>
 </div>
-
-

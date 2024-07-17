@@ -22,13 +22,13 @@ export interface Fruit {
 }
 
 @Component({
-  selector: 'app-chips',
+  selector: 'app-module',
   standalone: true,
   imports: [DemoFlexyModule, MatFormFieldModule, MatChipsModule, NgFor, MatIconModule],
-  templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.scss']
+  templateUrl: './module.component.html',
+  styleUrls: ['./module.component.scss']
 })
-export class ChipsComponent {
+export class moduleComponent {
   visible = true;
   selectable = true;
   removable = true;

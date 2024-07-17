@@ -35,17 +35,22 @@ export class FullComponent {
       menu: "Monthly report",
     },
     {
-      link: "/forms",
+      link: "/registration",
       icon: "file-text",
       menu: "User Registration",
     },
     {
-      link: "/button",
+      link: "/login",
+      icon: "layout",
+      menu: "login",
+    },
+    {
+      link: "/project",
       icon: "layout",
       menu: "Project Creation",
     },
     {
-      link: "/chips",
+      link: "/module",
       icon: "settings",
       menu: "Project Module Creation",
     },
@@ -55,13 +60,9 @@ export class FullComponent {
     //   icon: "info",
     //   menu: "Alerts",
     // },
-    // {
-    //   link: "/grid-list",
-    //   icon: "file-text",
-    //   menu: "Grid List",
-    // },
+   
     {
-      link: "/menu",
+      link: "/timesheet",
       icon: "menu",
       menu: "Timesheet Fill Up",
     },

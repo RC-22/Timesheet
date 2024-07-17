@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlertsComponent } from './components/alerts/alerts.component';
-import { ButtonsComponent } from './components/buttons/buttons.component';
-import { ChipsComponent } from './components/chips/chips.component';
+import {projectComponent} from './components/project/project.component';
+import { moduleComponent } from './components/module/module.component';
 import { ExpansionComponent } from './components/expansion/expansion.component';
-import { FormsComponent } from './components/forms/forms.component';
-import { GridListComponent } from './components/grid-list/grid-list.component';
-import { MenuComponent } from './components/menu/menu.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { loginComponent } from './components/login/login.component';
+import {timesheetComponent } from './components/timesheet/timesheet.component';
 import { ProgressSnipperComponent } from './components/progress-snipper/progress-snipper.component';
 import { ProgressComponent } from './components/progress/progress.component';
 import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
@@ -27,13 +27,13 @@ const routes: Routes = [
       {path:"", redirectTo:"/home", pathMatch:"full"},
       {path:"home", component:DashboardComponent},
       {path:"alerts", component:AlertsComponent},
-      {path:"forms", component:FormsComponent},
+      {path:"registration", component:RegistrationComponent},
       {path:"table", component:ProductComponent},
-      {path:"grid-list", component:GridListComponent},
-      {path:"menu", component:MenuComponent},
+      {path:"login", component:loginComponent},
+      {path:"timesheet", component:timesheetComponent},
       {path:"tabs", component:TabsComponent},
       {path:"expansion", component:ExpansionComponent},
-      {path:"chips", component:ChipsComponent},
+      {path:"module", component:moduleComponent},
       {path:"progress", component:ProgressComponent},
       {path:"toolbar", component:ToolbarComponent},
       {path:"progress-snipper", component:ProgressSnipperComponent},
@@ -41,7 +41,7 @@ const routes: Routes = [
       {path:"slider", component:SliderComponent},
       {path:"slide-toggle", component:SlideToggleComponent},
       {path:"tooltip", component:TooltipsComponent},
-      {path:"button", component:ButtonsComponent},
+      {path:"project", component:projectComponent},
     ]
   },
 

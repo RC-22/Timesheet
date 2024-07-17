@@ -26,7 +26,7 @@ import { ComponentsModule } from './components/components.module';
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     DashboardModule,
-    ComponentsModule,
+   ComponentsModule,
     FormsModule
   ],
   providers: [],
