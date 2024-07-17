@@ -30,12 +30,18 @@
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Start Date</mat-label>
-        <input matInput type="date">
+        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- <input matInput type="date"> -->
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Due Date</mat-label>
-        <input matInput type="date" id="Start">
+        <!-- <input matInput type="date" id="Start"> -->
+        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <button mat-button class="btn btn-info fw-normal" type="submit" >Submit</button>

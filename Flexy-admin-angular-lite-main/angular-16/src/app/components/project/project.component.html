@@ -12,10 +12,11 @@
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Project Creation Date</mat-label>
-        <input matInput type="date" placeholder="">
-        <mat-error *ngIf="projectForm.get('creationDate').hasError('required') && (projectForm.get('creationDate').dirty || projectForm.get('creationDate').touched)">
-          Creation Date is required
-        </mat-error>
+        <!-- <input matInput type="date" placeholder=""> -->
+        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
@@ -25,10 +26,10 @@
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Due Date</mat-label>
-        <input matInput type="date" placeholder="">
-        <mat-error *ngIf="projectForm.get('dueDate').hasError('required') && (projectForm.get('dueDate').dirty || projectForm.get('dueDate').touched)">
-          Due Date is required
-        </mat-error>
+        <!-- <input matInput type="date" placeholder=""> -->
+        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="w-100 fs-16" appearance="outline">
