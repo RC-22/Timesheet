@@ -47,12 +47,12 @@ const routes: Routes = [
       {path:"project", component:projectComponent},
 
 
-  { path: 'login', component: loginComponent },
-  {path:"home", component:DashboardComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home' }  // Wildcard route for a 404 page
-    ]
-  },
+  // { path: 'login', component: loginComponent },
+  // {path:"home", component:DashboardComponent},
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/home' }  // Wildcard route for a 404 page
+     ]
+   },
 
   {path:"", redirectTo:"/home", pathMatch:"full"},
   {path:"**", redirectTo:"/home", pathMatch:"full"},

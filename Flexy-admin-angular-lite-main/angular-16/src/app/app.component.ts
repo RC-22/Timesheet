@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flexy-angular';
-  isLoginPage: true;
+  isLoginPage: boolean=true;
 }

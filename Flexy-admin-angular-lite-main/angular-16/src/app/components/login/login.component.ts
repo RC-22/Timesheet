@@ -14,8 +14,8 @@ import { DemoFlexyModule } from 'src/app/demo-flexy-module';
 })
 export class loginComponent  {
   loginForm: FormGroup;
-//isLoggedIn: any;
-isLoggedIn: boolean = false; 
+
+isLoggedIn: boolean = true; 
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
