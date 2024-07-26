@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DemoFlexyModule } from 'src/app/demo-flexy-module';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,39 +13,34 @@ import { DemoFlexyModule } from 'src/app/demo-flexy-module';
   styleUrls: ['./login.component.scss']
 })
 export class loginComponent  {
-// onSubmit() {
-// throw new Error('Method not implemented.');
-// }
-//   showPassword = false; // Initially hide password
-// loginForm: any;
-
-//   constructor() {}
-
-//   togglePasswordVisibility(): void {
-//     this.showPassword = !this.showPassword;
-//   }
-showPassword = false;
   loginForm: FormGroup;
+//isLoggedIn: any;
+isLoggedIn: boolean = false; 
 
-  constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
+  constructor(private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
-
-  onSubmit(): void {
+  onSubmit() {
     if (this.loginForm.valid) {
-      // Implement your login logic here
+      // Form is valid, perform login or further processing here
       console.log('Form submitted:', this.loginForm.value);
     } else {
-      // Mark all fields as touched to display validation errors
-      this.loginForm.markAllAsTouched();
+      // Mark all fields as touched to display validation messages
+      this.markFormGroupTouched(this.loginForm);
     }
   }
-  
+
+  // Utility method to mark all fields as touched
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
 }

@@ -11,6 +11,7 @@ import { DemoFlexyModule } from 'src/app/demo-flexy-module';
   standalone: true,
   imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule],
   templateUrl: './project.component.html',
+  styleUrls:['./project.component.scss'],
 })
 export class projectComponent  {
   projectForm: FormGroup;
@@ -18,32 +19,22 @@ export class projectComponent  {
   constructor(private formBuilder: FormBuilder) {
     this.projectForm = this.formBuilder.group({
       projectName: ['', Validators.required],
-      creationDate: ['', Validators.required],
+      projectCreationDate: [''],
       assignTo: [''],
-      dueDate: ['', Validators.required],
+      dueDate: [''],
       clientName: [''],
       note: ['']
-    }); 
+    });
   }
 
   onSubmit() {
     if (this.projectForm.valid) {
-      console.log(this.projectForm.value); // Replace with your form submission logic
+      console.log(this.projectForm.value); // Replace with your logic to handle form submission
     } else {
-      // Mark all fields as touched to display validation messages
-      this.markFormGroupTouched(this.projectForm);
+      // Mark all fields as touched to display validation errors
+      this.projectForm.markAllAsTouched();
     }
   }
-
-  // Helper method to mark all fields as touched
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
-      }
-    });
-  }
 }
+
 

@@ -1,16 +1,32 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { DemoFlexyModule } from 'src/app/demo-flexy-module';
-
 @Component({
   selector: 'app-timesheet',
   standalone: true,
-  imports: [DemoFlexyModule, MatMenuModule, MatButtonModule, MatIconModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './timesheet.component.html',
-  styleUrls: ['./timesheet.component.scss']
+  styleUrls: ['./timesheet.component.scss'],
 })
-export class timesheetComponent { 
-  
+export class timesheetComponent implements OnInit {
+  startTime: string = '';
+  endTime: string = '';
+  totalHours: number = 0;
+  ngOnInit() {}
+  calculateTotalHours() {
+    if (this.startTime && this.endTime) {
+      const start = this.convertToMinutes(this.startTime);
+      const end = this.convertToMinutes(this.endTime);
+      this.totalHours = (end - start) / 60;
+    } else {
+      this.totalHours = 0; // Ensure totalHours is reset if times are invalid
+      console.log('time');
+    }
+  }
+  convertToMinutes(time: string): number {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
 }

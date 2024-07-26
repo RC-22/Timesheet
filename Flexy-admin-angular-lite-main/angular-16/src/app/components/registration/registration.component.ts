@@ -14,7 +14,8 @@ import { MatNativeDateModule } from '@angular/material/core';
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatCheckboxModule, MatRadioModule, MatButtonModule,MatDatepickerModule,
     MatNativeDateModule,],
-  templateUrl: './registration.component.html',
+  templateUrl:'./registration.component.html',
+  styleUrls:['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
   checked: BooleanInput;
@@ -23,7 +24,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.forms = this.formBuilder.group({
       employeeName: ['', Validators.required],
-      employeeId: [''],
+      employeeId: ['',Validators.required],
       birthdate: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

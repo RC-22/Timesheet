@@ -19,6 +19,9 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 
+
+
+
 const routes: Routes = [
   {
     path:"",
@@ -42,6 +45,12 @@ const routes: Routes = [
       {path:"slide-toggle", component:SlideToggleComponent},
       {path:"tooltip", component:TooltipsComponent},
       {path:"project", component:projectComponent},
+
+
+  { path: 'login', component: loginComponent },
+  {path:"home", component:DashboardComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }  // Wildcard route for a 404 page
     ]
   },
 

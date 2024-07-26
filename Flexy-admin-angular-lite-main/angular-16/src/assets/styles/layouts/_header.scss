@@ -5,6 +5,9 @@
 .header {
   // background-color: $body-color !important;
   background-color: transparent;
+ // border: 2px solid black;
+
+
 }
 
 .search-section {
@@ -17,6 +20,7 @@
   max-height: 64px;
   background-color: $white;
   box-shadow: 0px 7px 30px 0px $shadow;
+ 
 }
 
 .profile-dropdown {
