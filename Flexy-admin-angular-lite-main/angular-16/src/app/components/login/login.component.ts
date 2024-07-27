@@ -1,46 +1,60 @@
-import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { DemoFlexyModule } from 'src/app/demo-flexy-module';
+// import { Component } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { AuthService } from 'src/app/services/authservices';
+
+// @Component({
+//   selector: 'app-login',
+//   standalone:true,
+//   templateUrl: './login.component.html',
+//   styleUrls: ['./login.component.scss']
+// })
+// export class LoginComponent {
+// loginForm: any;
+// onSubmit() {
+// throw new Error('Method not implemented.');
+// }
+//   username: string = '';
+//   password: string = '';
+//   constructor(private authService: AuthService, private router: Router) {}
+//   onLogin() {
+//     if (this.username && this.password) {
+//       this.authService.login(this.username, this.password);
+//       this.router.navigate(['/dashboard']); // Redirect to the dashboard or any other protected route
+//     } else {
+//       alert('Please enter username and password');
+//     }
+//   }
+// }
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authservices';
 
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [DemoFlexyModule, MatGridListModule, NgFor],
+  standalone:true,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  imports:[FormsModule,CommonModule]
 })
-export class loginComponent  {
-  loginForm: FormGroup;
-
-isLoggedIn: boolean = true; 
-
-  constructor(private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      // Form is valid, perform login or further processing here
-      console.log('Form submitted:', this.loginForm.value);
-    } else {
-      // Mark all fields as touched to display validation messages
-      this.markFormGroupTouched(this.loginForm);
-    }
-  }
-
-  // Utility method to mark all fields as touched
-  markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
+export class LoginComponent {
+  email: string = '';
+  password: string = '';
+loginForm: any;
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  onSubmit(form: any) {
+    if (form.valid) {
+      this.authService.login(this.email, this.password);
+      if (this.authService.isLoggedIn()) {
+        this.router.navigate(['/home']);
+      } else {
+        alert('Invalid credentials');
       }
-    });
+    }
   }
 }

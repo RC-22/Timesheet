@@ -1,34 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
-interface sidebarMenu {
+import { map, shareReplay, filter } from 'rxjs/operators';
+interface SidebarMenu {
   link: string;
   icon: string;
   menu: string;
 }
-
 @Component({
   selector: 'app-full',
   templateUrl: './full.component.html',
   styleUrls: ['./full.component.scss']
 })
-export class FullComponent {
-
+export class FullComponent implements OnInit {
+onLogout() {
+throw new Error('Method not implemented.');
+}
   search: boolean = false;
-
+  showSidebarHeader: boolean = true;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-
-  constructor(private breakpointObserver: BreakpointObserver) { }
-
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router) { }
   routerActive: string = "activelink";
-
-  sidebarMenu: sidebarMenu[] = [
+  sidebarMenu: SidebarMenu[] = [
     {
       link: "/home",
       icon: "calendar",
@@ -39,11 +37,11 @@ export class FullComponent {
       icon: "file-text",
       menu: "User Registration",
     },
-    {
-      link: "/login",
-      icon: "layout",
-      menu: "login",
-    },
+    // {
+    //   link: "/login",
+    //   icon: "layout",
+    //   menu: "login",
+    // },
     {
       link: "/project",
       icon: "layout",
@@ -54,69 +52,17 @@ export class FullComponent {
       icon: "settings",
       menu: "Project Module Creation",
     },
-    
-    // {
-    //   link: "/alerts",
-    //   icon: "info",
-    //   menu: "Alerts",
-    // },
-   
     {
       link: "/timesheet",
       icon: "menu",
       menu: "Timesheet Fill Up",
     },
-    // {
-    //   link: "/table",
-    //   icon: "grid",
-    //   menu: "Tables",
-    // },
-  //   {
-  //     link: "/expansion",
-  //     icon: "divide-circle",
-  //     menu: "Expansion Panel",
-  //   },
-    
-  //   {
-  //     link: "/tabs",
-  //     icon: "list",
-  //     menu: "Tabs",
-  //   },
-  //   {
-  //     link: "/progress",
-  //     icon: "bar-chart-2",
-  //     menu: "Progress Bar",
-  //   },
-  //   {
-  //     link: "/toolbar",
-  //     icon: "voicemail",
-  //     menu: "Toolbar",
-  //   },
-  //   {
-  //     link: "/progress-snipper",
-  //     icon: "loader",
-  //     menu: "Progress Snipper",
-  //   },
-  //   {
-  //     link: "/tooltip",
-  //     icon: "bell",
-  //     menu: "Tooltip",
-  //   },
-  //   {
-  //     link: "/snackbar",
-  //     icon: "slack",
-  //     menu: "Snackbar",
-  //   },
-  //   {
-  //     link: "/slider",
-  //     icon: "sliders",
-  //     menu: "Slider",
-  //   },
-  //   {
-  //     link: "/slide-toggle",
-  //     icon: "layers",
-  //     menu: "Slide Toggle",
-  //   },
-  ]
-
+  ];
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.showSidebarHeader = !this.router.url.includes('login');
+    });
+  }
 }
