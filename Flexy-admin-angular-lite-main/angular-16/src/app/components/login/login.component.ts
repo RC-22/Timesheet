@@ -42,7 +42,7 @@ import { AuthService } from 'src/app/services/authservices';
 export class LoginComponent {
   email: string = '';
   password: string = '';
-loginForm: any;
+  loginForm: any;
   constructor(
     private authService: AuthService,
     private router: Router

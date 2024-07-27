@@ -3,20 +3,21 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay, filter } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/authservices';
+
+
 interface SidebarMenu {
   link: string;
   icon: string;
   menu: string;
 }
+
 @Component({
   selector: 'app-full',
   templateUrl: './full.component.html',
   styleUrls: ['./full.component.scss']
 })
 export class FullComponent implements OnInit {
-onLogout() {
-throw new Error('Method not implemented.');
-}
   search: boolean = false;
   showSidebarHeader: boolean = true;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -24,8 +25,15 @@ throw new Error('Method not implemented.');
       map(result => result.matches),
       shareReplay()
     );
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) { }
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private authService: AuthService // Inject AuthService
+  ) {}
+
   routerActive: string = "activelink";
+
   sidebarMenu: SidebarMenu[] = [
     {
       link: "/home",
@@ -37,11 +45,6 @@ throw new Error('Method not implemented.');
       icon: "file-text",
       menu: "User Registration",
     },
-    // {
-    //   link: "/login",
-    //   icon: "layout",
-    //   menu: "login",
-    // },
     {
       link: "/project",
       icon: "layout",
@@ -58,11 +61,19 @@ throw new Error('Method not implemented.');
       menu: "Timesheet Fill Up",
     },
   ];
+
   ngOnInit() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
+      // Hide sidebar header on login page
       this.showSidebarHeader = !this.router.url.includes('login');
     });
+  }
+
+  // Logout function
+  logout(): void {
+    this.authService.logout(); // Call logout method from AuthService
+    this.router.navigate(['/login']); // Redirect to login page after logout
   }
 }

@@ -14,8 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 // Reactive forms module (use if needed)
-import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor'; // Adjust path as necessary
+
+
 //import { AuthInterceptor } from './services/auth.interceptor'; // Adjust path as needed
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -32,7 +34,7 @@ import { ComponentsModule } from './components/components.module';
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     DashboardModule,
-    ComponentsModule,
+   ComponentsModule,
     FormsModule,  // Import once here
     MatCardModule,
     MatButtonModule,
@@ -41,7 +43,7 @@ import { ComponentsModule } from './components/components.module';
     MatIconModule
     // Remove ReactiveFormsModule if not using reactive forms
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

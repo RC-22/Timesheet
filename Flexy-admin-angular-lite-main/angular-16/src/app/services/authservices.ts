@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  constructor() {}
-  // Handle login logic
-  login(email: string, password: string): void {
-    // Simple check to simulate authentication
-    if (email && password) {
-      localStorage.setItem('user', JSON.stringify({ email, password }));
-    }
-  }
-  // Handle logout logic
-  logout(): void {
-    localStorage.removeItem('user');
-  }
-  // Check if the user is logged in
+
+  constructor(private router: Router) { }
+
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('user');
+    return !!localStorage.getItem('token'); // Adjust as needed
+  }
+
+  login(token: string, password: string): void {
+    localStorage.setItem('token', token); // Or sessionStorage
+    this.router.navigate(['/home']); // Redirect to home or intended page
+  }
+
+  logout(): void {
+    localStorage.removeItem('token'); // Or sessionStorage
+    this.router.navigate(['/login']); // Redirect to login page
   }
 }

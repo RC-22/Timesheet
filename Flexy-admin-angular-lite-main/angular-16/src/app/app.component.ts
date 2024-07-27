@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/authservices';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'flexy-angular';
   isLoginPage: boolean=true;
+  constructor(private authService: AuthService) {}
+
+  onLogout(): void {
+    this.authService.logout();
+  }
 }
