@@ -9,9 +9,14 @@ import { AuthService } from './services/authservices';
 export class AppComponent {
   title = 'flexy-angular';
   isLoginPage: boolean=true;
+  router: any;
   constructor(private authService: AuthService) {}
 
   onLogout(): void {
     this.authService.logout();
+  }
+
+  navigateToChangePassword(): void {
+    this.router.navigate(['/change-password']);
   }
 }

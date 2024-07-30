@@ -9,9 +9,12 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './guards/authguard.services';
- 
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'change-password', component: ChangePasswordComponent }, 
+  
   {
     path: '',
     component: FullComponent,
@@ -23,6 +26,7 @@ const routes: Routes = [
       { path: 'timesheet', component: timesheetComponent, canActivate: [AuthGuard] },
       { path: 'module', component: moduleComponent, canActivate: [AuthGuard] },
       { path: 'project', component: projectComponent, canActivate: [AuthGuard] },
+     
     ],
   },
   { path: '**', redirectTo: '/login' }, // Wildcard route for a 404 page

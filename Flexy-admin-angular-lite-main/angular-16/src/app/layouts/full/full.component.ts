@@ -18,6 +18,22 @@ interface SidebarMenu {
   styleUrls: ['./full.component.scss']
 })
 export class FullComponent implements OnInit {
+ChangePassword() {
+throw new Error('Method not implemented.');
+}
+onChangePassword() {
+throw new Error('Method not implemented.');
+}
+navigateToChangePassword() {
+throw new Error('Method not implemented.');
+}
+  snackBar: any;
+changepassword() {
+throw new Error('Method not implemented.');
+}
+password() {
+throw new Error('Method not implemented.');
+}
   search: boolean = false;
   showSidebarHeader: boolean = true;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -60,6 +76,7 @@ export class FullComponent implements OnInit {
       icon: "menu",
       menu: "Timesheet Fill Up",
     },
+   
   ];
 
   ngOnInit() {
@@ -75,5 +92,9 @@ export class FullComponent implements OnInit {
   logout(): void {
     this.authService.logout(); // Call logout method from AuthService
     this.router.navigate(['/login']); // Redirect to login page after logout
+  }
+
+  onChangePasswordClick(): void {
+    this.router.navigate(['/change-password']);
   }
 }

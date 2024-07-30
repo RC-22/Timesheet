@@ -9,7 +9,7 @@ import { timesheetComponent } from './timesheet/timesheet.component';
 import { moduleComponent } from './module/module.component';
 import { FormsModule } from '@angular/forms';
 import { projectComponent } from './project/project.component';
-
+//import  { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -22,6 +22,7 @@ import { projectComponent } from './project/project.component';
     RegistrationComponent,
     LoginComponent,
     FormsModule,
+   //ChangePasswordComponent,
 
   ],
   exports: [
@@ -30,6 +31,7 @@ import { projectComponent } from './project/project.component';
     timesheetComponent,
     moduleComponent,
     projectComponent,
+   // ChangePasswordComponent,
   ]
 })
 export class ComponentsModule { }
