@@ -2,3 +2,23 @@ button{
     background-color:#03c9d7;
     
   }
+  .form-row {
+    display: flex;
+    gap: 16px; /* Space between fields */
+   // margin-bottom: 16px; /* Space below each row */
+  }
+  
+  .form-field {
+    flex: 1; /* Allows the fields to grow equally */
+  }
+  
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column; /* Stack fields vertically on small screens */
+    }
+  
+    .form-field {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+ 

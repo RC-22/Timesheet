@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  changePassword(currentPassword: string, newPassword: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private router: Router) { }
 
@@ -22,11 +25,8 @@ export class AuthService {
     this.router.navigate(['/login']); // Navigate to login page after logout
   }
 
-  changePassword(currentPassword: string, newPassword: string): void {
-    // Implement your password change logic here, e.g., call an API to update password
-    console.log('Changing password:', currentPassword, newPassword);
-    // After changing password, navigate to home or any other page
-    this.router.navigate(['/home']);
-  }
+ 
+  
+
 
 }

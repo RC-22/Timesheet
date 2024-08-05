@@ -1,65 +1,84 @@
 <div class="card">
 	<div class="card-body">
 	  <h4 class="mb-32">Timesheet Fill Up</h4>
-	  <form>
-		  <mat-form-field class="w-100 fs-16" appearance="outline">
-			<mat-label>date</mat-label>
-			<input matInput type="date" placeholder="" />
+	  <form [formGroup]="timesheetForm" (ngSubmit)="onSubmit()">
+		<div class="form-row">
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Date</mat-label>
+			<input matInput [matDatepicker]="datePicker" formControlName="date" placeholder="Choose a date" />
+			<mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+			<mat-datepicker #datePicker></mat-datepicker>
+			<mat-error *ngIf="timesheetForm.get('date')?.hasError('required') && (timesheetForm.get('date')?.dirty || timesheetForm.get('date')?.touched)">
+			  Date is required
+			</mat-error>
 		  </mat-form-field>
-		 
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Project Name</mat-label>
-		  <input matInput type="text" placeholder="Enter Project Name" />
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Module</mat-label>
-		  <input matInput type="text" placeholder="Enter Module Name" />
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Task</mat-label>
-		  <input matInput type="text" placeholder="Enter Your Task" />
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Task Description</mat-label>
-		  <textarea
-			matInput
-			rows="4"
-			placeholder="Write Your Task Description"
-		  ></textarea>
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Type</mat-label>
-		  <input matInput type="text" placeholder="Enter Type" />
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>Start Time</mat-label>
-		  <input
-			matInput
-			type="time"
-			placeholder="HH:MM"
-			[(ngModel)]="startTime"
-			(change)="calculateTotalHours()"
-			name="startTime"
-		  />
-		</mat-form-field>
-		<mat-form-field class="w-100 fs-16" appearance="outline">
-		  <mat-label>End Time</mat-label>
-		  <input
-			matInput
-			type="time"
-			placeholder="HH:MM"
-			[(ngModel)]="endTime"
-			(change)="calculateTotalHours()"
-			name="endTime"
-		  />
-		</mat-form-field>
+  
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Project Name</mat-label>
+			<input matInput formControlName="projectName" type="text" placeholder="Enter Project Name" />
+			<mat-error *ngIf="timesheetForm.get('projectName')?.hasError('required') && (timesheetForm.get('projectName')?.dirty || timesheetForm.get('projectName')?.touched)">
+			  Project Name is required
+			</mat-error>
+		  </mat-form-field>
+		</div>
+  
+		<div class="form-row">
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Module</mat-label>
+			<input matInput formControlName="module" type="text" placeholder="Enter Module Name" />
+			<mat-error *ngIf="timesheetForm.get('module')?.hasError('required') && (timesheetForm.get('module')?.dirty || timesheetForm.get('module')?.touched)">
+			  Module is required
+			</mat-error>
+		  </mat-form-field>
+  
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Task</mat-label>
+			<input matInput formControlName="task" type="text" placeholder="Enter Your Task" />
+			<mat-error *ngIf="timesheetForm.get('task')?.hasError('required') && (timesheetForm.get('task')?.dirty || timesheetForm.get('task')?.touched)">
+			  Task is required
+			</mat-error>
+		  </mat-form-field>
+		</div>
+  
+		<div class="form-row">
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Task Description</mat-label>
+			<textarea matInput formControlName="taskDescription" rows="4" placeholder="Write Your Task Description"></textarea>
+		  </mat-form-field>
+  
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Type</mat-label>
+			<input matInput formControlName="type" type="text" placeholder="Enter Type" />
+		  </mat-form-field>
+		</div>
+  
+		<div class="form-row">
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>Start Time</mat-label>
+			<input matInput [ngxTimepicker]="startTimePicker" formControlName="startTime" placeholder="HH:MM AM/PM" />
+			<mat-error *ngIf="timesheetForm.get('startTime')?.hasError('required') && (timesheetForm.get('startTime')?.dirty || timesheetForm.get('startTime')?.touched)">
+			  Start Time is required
+			</mat-error>
+			<ngx-material-timepicker #startTimePicker></ngx-material-timepicker>
+		  </mat-form-field>
+  
+		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+			<mat-label>End Time</mat-label>
+			<input matInput [ngxTimepicker]="endTimePicker" formControlName="endTime" placeholder="HH:MM AM/PM" />
+			<mat-error *ngIf="timesheetForm.get('endTime')?.hasError('required') && (timesheetForm.get('endTime')?.dirty || timesheetForm.get('endTime')?.touched)">
+			  End Time is required
+			</mat-error>
+			<ngx-material-timepicker #endTimePicker></ngx-material-timepicker>
+		  </mat-form-field>
+		</div>
+  
 		<mat-form-field class="w-100 fs-16" appearance="outline">
 		  <mat-label>Total Hours</mat-label>
 		  <input matInput type="number" [value]="totalHours" readonly />
 		</mat-form-field>
-		<button mat-button class="btn btn-info fw-normal" type="submit">
-		  Submit
-		</button>
+  
+		<button mat-button class="btn btn-info fw-normal" type="submit">Submit</button>
 	  </form>
 	</div>
   </div>
+  

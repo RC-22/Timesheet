@@ -10,11 +10,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './guards/authguard.services';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+//import { mysettingsComponent } from './components/mysettings/mysettings.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'change-password', component: ChangePasswordComponent }, 
-  
+  //{ path: 'mysettings', component: mysettingsComponent }, 
   {
     path: '',
     component: FullComponent,

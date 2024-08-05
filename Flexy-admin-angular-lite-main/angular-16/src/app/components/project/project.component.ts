@@ -2,39 +2,50 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { DemoFlexyModule } from 'src/app/demo-flexy-module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule],
+  imports: [
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    CommonModule
+  ],
   templateUrl: './project.component.html',
-  styleUrls:['./project.component.scss'],
+  styleUrls: ['./project.component.scss'],
 })
-export class projectComponent  {
-  projectForm: FormGroup;
+export class projectComponent implements OnInit {
+  projectForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
     this.projectForm = this.formBuilder.group({
       projectName: ['', Validators.required],
-      projectCreationDate: [''],
-      assignTo: [''],
-      dueDate: [''],
-      clientName: [''],
+      projectCreationDate: [null, Validators.required],
+      assignTo: [null, Validators.required],
+      dueDate: [null, Validators.required],
+      clientName: [null, Validators.required],
       note: ['']
     });
   }
 
   onSubmit() {
     if (this.projectForm.valid) {
-      console.log(this.projectForm.value); // Replace with your logic to handle form submission
+      console.log('Form Submitted', this.projectForm.value);
     } else {
-      // Mark all fields as touched to display validation errors
       this.projectForm.markAllAsTouched();
     }
   }
 }
-
-

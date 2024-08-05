@@ -1,52 +1,66 @@
 <div class="card">
   <div class="card-body">
     <h4 class="mb-32">Project Module Creation</h4>
-    <form>
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Project Name</mat-label>
-        <input matInput type="text" placeholder="Enter Project Name">
-      </mat-form-field>
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Project Name</mat-label>
+          <input matInput formControlName="projectName" placeholder="Enter Project Name">
+          <mat-error *ngIf="projectForm.get('projectName').hasError('required')">
+            Project Name is required
+          </mat-error>
+        </mat-form-field>
 
-      <!-- <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Project Creation Date</mat-label>
-        <input matInput type="date" placeholder="">
-      </mat-form-field> -->
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Assign To</mat-label>
+          <input matInput formControlName="assignTo" placeholder="Enter Members Name">
+          <mat-error *ngIf="projectForm.get('assignTo').hasError('required')">
+            Assign To is required
+          </mat-error>
+        </mat-form-field>
+      </div>
 
+      <div class="form-row">
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Module Name</mat-label>
+          <input matInput formControlName="moduleName" placeholder="Enter Module Name">
+          <mat-error *ngIf="projectForm.get('moduleName').hasError('required')">
+            Module Name is required
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Assign To</mat-label>
-        <input matInput type="text" placeholder="Enter Members Name">
-      </mat-form-field>
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" (dateChange)="onDateChange($event)" placeholder="Choose a date" id="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+          <mat-error *ngIf="projectForm.get('startDate').hasError('required')">
+            Start Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Module Name</mat-label>
-        <input matInput type="text" placeholder="Enter Module Name">
-      </mat-form-field>
+      <div class="form-row">
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Module Description</mat-label>
+          <textarea matInput formControlName="moduleDescription" rows="4" placeholder="Enter Module Description"></textarea>
+          <mat-error *ngIf="projectForm.get('moduleDescription').hasError('required')">
+            Module Description is required
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Module Descripition</mat-label>
-        <textarea matInput rows="4" placeholder="Enter Module Descripition " value=""></textarea>
-      </mat-form-field>
+        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate" (dateChange)="onDateChange($event)" placeholder="Choose a date" id="dueDate">
+          <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #dueDatePicker></mat-datepicker>
+          <mat-error *ngIf="projectForm.get('dueDate').hasError('required')">
+            Due Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Start Date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <!-- <input matInput type="date"> -->
-      </mat-form-field>
-
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Due Date</mat-label>
-        <!-- <input matInput type="date" id="Start"> -->
-        <input matInput [matDatepicker]="picker" formControlName="" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <button mat-button class="btn btn-info fw-normal" type="submit" >Submit</button>
+      <button mat-button class="btn btn-info fw-normal" type="submit">Submit</button>
     </form>
   </div>
 </div>
-
-

@@ -17,11 +17,12 @@ import { projectComponent } from './project/project.component';
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     projectComponent,
-    timesheetComponent,
+   timesheetComponent,
     moduleComponent,
     RegistrationComponent,
     LoginComponent,
     FormsModule,
+    
    //ChangePasswordComponent,
 
   ],

@@ -2,3 +2,24 @@ button{
     background-color:#03c9d7;
     
   }
+  .form-row {
+    display: flex;
+    gap: 16px; /* Adjust gap between fields as needed */
+    //margin-bottom: 16px; /* Space between rows */
+  }
+  
+  .form-field {
+    flex: 1; /* Ensures that form fields grow equally */
+  }
+  
+  /* Optional: Adjust width of form fields on smaller screens */
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+  
+    .form-field {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+   
