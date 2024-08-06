@@ -5,7 +5,7 @@ import { moduleComponent } from './components/module/module.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { timesheetComponent } from './components/timesheet/timesheet.component';
-import { ProductComponent } from './dashboard/dashboard-components/product/product.component';
+//import {ProjectdataComponent } from './dashboard/dashboard-components/product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './guards/authguard.services';
@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default to login
       { path: 'home', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard] },
-      { path: 'table', component: ProductComponent, canActivate: [AuthGuard] },
+      //{ path: 'table', component: ProjectdataComponent, canActivate: [AuthGuard] },
       { path: 'timesheet', component: timesheetComponent, canActivate: [AuthGuard] },
       { path: 'module', component: moduleComponent, canActivate: [AuthGuard] },
       { path: 'project', component: projectComponent, canActivate: [AuthGuard] },

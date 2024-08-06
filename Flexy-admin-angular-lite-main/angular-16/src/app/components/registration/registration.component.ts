@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
       mobileNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       address: ['', Validators.required],
-      gender: ['']
+      gender: ['male', Validators.required]
     });
   }
   onSubmit() {

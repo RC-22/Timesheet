@@ -7,7 +7,7 @@
           <mat-label>Project Name</mat-label>
           <input matInput formControlName="projectName" placeholder="Enter Project Name">
           <mat-error *ngIf="projectForm.get('projectName')?.hasError('required') && (projectForm.get('projectName')?.dirty || projectForm.get('projectName')?.touched)">
-            Project Name is required
+        
           </mat-error>
         </mat-form-field>
 
@@ -17,7 +17,7 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="projectForm.get('projectCreationDate')?.hasError('required') && (projectForm.get('projectCreationDate')?.dirty || projectForm.get('projectCreationDate')?.touched)">
-            Project Creation Date is required
+           
           </mat-error>
         </mat-form-field>
       </div>
@@ -27,18 +27,17 @@
           <mat-label>Assign To</mat-label>
           <input matInput formControlName="assignTo" placeholder="Enter Members Name">
         </mat-form-field>
-
-        <mat-form-field class="form-field w-100 fs-16" appearance="outline">
-          <mat-label>Due Date</mat-label>
-          <input matInput formControlName="dueDate" [matDatepicker]="picker" placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="projectForm.get('dueDate')?.hasError('required') && (projectForm.get('dueDate')?.dirty || projectForm.get('dueDate')?.touched)">
-            Due Date is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-
+     
+      <mat-form-field class="form-field w-100 fs-16" appearance="outline">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #dueDatePicker></mat-datepicker>
+        <mat-error *ngIf="projectForm.get('dueDate')?.hasError('required') && (projectForm.get('dueDate')?.dirty || projectForm.get('dueDate')?.touched)">
+        </mat-error>
+      </mat-form-field>
+      
+ </div>
       <mat-form-field class="w-100 fs-16" appearance="outline">
         <mat-label>Client Name</mat-label>
         <input matInput formControlName="clientName" placeholder="Enter Client Name">

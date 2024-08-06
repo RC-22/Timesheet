@@ -56,19 +56,19 @@
 		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
 			<mat-label>Start Time</mat-label>
 			<input matInput [ngxTimepicker]="startTimePicker" formControlName="startTime" placeholder="HH:MM AM/PM" />
+			<ngx-material-timepicker #startTimePicker></ngx-material-timepicker>
 			<mat-error *ngIf="timesheetForm.get('startTime')?.hasError('required') && (timesheetForm.get('startTime')?.dirty || timesheetForm.get('startTime')?.touched)">
 			  Start Time is required
 			</mat-error>
-			<ngx-material-timepicker #startTimePicker></ngx-material-timepicker>
 		  </mat-form-field>
   
 		  <mat-form-field class="form-field w-100 fs-16" appearance="outline">
 			<mat-label>End Time</mat-label>
 			<input matInput [ngxTimepicker]="endTimePicker" formControlName="endTime" placeholder="HH:MM AM/PM" />
+			<ngx-material-timepicker #endTimePicker></ngx-material-timepicker>
 			<mat-error *ngIf="timesheetForm.get('endTime')?.hasError('required') && (timesheetForm.get('endTime')?.dirty || timesheetForm.get('endTime')?.touched)">
 			  End Time is required
 			</mat-error>
-			<ngx-material-timepicker #endTimePicker></ngx-material-timepicker>
 		  </mat-form-field>
 		</div>
   

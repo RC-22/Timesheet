@@ -1,32 +1,3 @@
-// // change-password.component.ts
-
-// import { CommonModule } from '@angular/common';
-// import { Component } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-change-password',
-//   standalone:true,
-//   templateUrl: './change-password.component.html',
-//   styleUrls: ['./change-password.component.scss'],
-//   imports:[FormsModule,CommonModule],
-// })
-// export class ChangePasswordComponent {
-// onChangePassword() {
-// throw new Error('Method not implemented.');
-// }
-// currentPassword: any;
-// confirmPassword: any;
-// newPassword: any;
-
-//   constructor(private router: Router) {}
-
-//   navigateToChangePassword(): void {
-//     this.router.navigate(['/change-password']); // Navigate to change password route
-//   }
-
-// }
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
