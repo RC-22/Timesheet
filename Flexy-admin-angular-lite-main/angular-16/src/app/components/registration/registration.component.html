@@ -1,13 +1,19 @@
 <div class="card">
   <div class="card-body">
     <h4 class="mb-32">User Registration</h4>
+
+    <!-- Display success message -->
+    <div *ngIf="submissionMessage" class="success-message">
+      {{ submissionMessage }}
+    </div>
+
     <form [formGroup]="forms" (ngSubmit)="onSubmit()">
       
       <div class="form-row">
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">
           <mat-label>Employee Name</mat-label>
           <input matInput formControlName="employeeName" type="text" placeholder="Enter your Name">
-          <mat-error *ngIf="forms.get('employeeName').invalid && forms.get('employeeName').touched">
+          <mat-error *ngIf="forms.get('employeeName')?.invalid && forms.get('employeeName')?.touched">
             Employee Name is required
           </mat-error>
         </mat-form-field>
@@ -15,6 +21,9 @@
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">
           <mat-label>Employee ID</mat-label>
           <input matInput formControlName="employeeId" type="text" placeholder="Enter your ID">
+          <mat-error *ngIf="forms.get('employeeId')?.invalid && forms.get('employeeId')?.touched">
+            Employee ID is required
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -24,7 +33,7 @@
           <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Choose a date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="forms.get('birthdate').invalid && forms.get('birthdate').touched">
+          <mat-error *ngIf="forms.get('birthdate')?.invalid && forms.get('birthdate')?.touched">
             Birthdate is required
           </mat-error>
         </mat-form-field>
@@ -32,7 +41,7 @@
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">
           <mat-label>Mobile Number</mat-label>
           <input matInput formControlName="mobileNumber" type="number" placeholder="Enter your Mobile Number">
-          <mat-error *ngIf="forms.get('mobileNumber').invalid && forms.get('mobileNumber').touched">
+          <mat-error *ngIf="forms.get('mobileNumber')?.invalid && forms.get('mobileNumber')?.touched">
             Mobile Number is required
           </mat-error>
         </mat-form-field>
@@ -42,7 +51,7 @@
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" type="email" placeholder="Enter your email">
-          <mat-error *ngIf="forms.get('email').invalid && forms.get('email').touched">
+          <mat-error *ngIf="forms.get('email')?.invalid && forms.get('email')?.touched">
             Valid email is required
           </mat-error>
         </mat-form-field>
@@ -50,7 +59,7 @@
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">
           <mat-label>Address</mat-label>
           <textarea matInput formControlName="address" placeholder="Write your Address"></textarea>
-          <mat-error *ngIf="forms.get('address').invalid && forms.get('address').touched">
+          <mat-error *ngIf="forms.get('address')?.invalid && forms.get('address')?.touched">
             Address is required
           </mat-error>
         </mat-form-field>

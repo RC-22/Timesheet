@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FeatherModule } from 'angular-feather';
@@ -21,7 +22,7 @@ import { AuthInterceptor } from './services/auth.interceptor'; // Adjust path as
 //import { AuthInterceptor } from './services/auth.interceptor'; // Adjust path as needed
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
-import { ComponentsModule } from './components/components.module';
+import { Componentmodule } from './components/components.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +35,13 @@ import { ComponentsModule } from './components/components.module';
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     DashboardModule,
-   ComponentsModule,
+   Componentmodule,
     FormsModule,  // Import once here
     MatCardModule,
     MatButtonModule,
     MatInputModule,
     MatDatepickerModule,
-    MatIconModule
+    MatIconModule,
     // Remove ReactiveFormsModule if not using reactive forms
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

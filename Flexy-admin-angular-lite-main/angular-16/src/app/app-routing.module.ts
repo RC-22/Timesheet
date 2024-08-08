@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { projectComponent } from './components/project/project.component';
+import { ProjectComponent } from './components/project/project.component';
 import { moduleComponent } from './components/module/module.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './guards/authguard.services';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 //import { mysettingsComponent } from './components/mysettings/mysettings.component';
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
       //{ path: 'table', component: ProjectdataComponent, canActivate: [AuthGuard] },
       { path: 'timesheet', component: timesheetComponent, canActivate: [AuthGuard] },
       { path: 'module', component: moduleComponent, canActivate: [AuthGuard] },
-      { path: 'project', component: projectComponent, canActivate: [AuthGuard] },
+      { path: 'project', component: ProjectComponent, canActivate: [AuthGuard] },
      
     ],
   },
@@ -34,6 +35,6 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule, ReactiveFormsModule,]
 })
 export class AppRoutingModule { }

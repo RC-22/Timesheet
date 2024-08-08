@@ -21,3 +21,8 @@ button{
     flex: 1 1 100%; /* Full width on smaller screens */
   }
 }
+.success-message {
+  color: rgb(233, 0, 0);
+  font-weight: bold;
+  margin-bottom: 16px;
+}

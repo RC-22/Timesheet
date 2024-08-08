@@ -1,6 +1,12 @@
 <div class="card">
   <div class="card-body">
     <h4 class="mb-32">Project Module Creation</h4>
+
+    <!-- Display success message -->
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
       <div class="form-row">
         <mat-form-field class="form-field w-100 fs-16" appearance="outline">

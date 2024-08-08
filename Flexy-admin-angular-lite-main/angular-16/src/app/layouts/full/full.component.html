@@ -1,7 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
-  <!-- Sidebar -->
-  <mat-sidenav *ngIf="showSidebarHeader" #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+  <mat-sidenav *ngIf="showSidebarHeader" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
     <!-- Sidebar content -->
     <div class="p-16">
       <div class="mb-16">
@@ -13,8 +14,9 @@
       <div class="pt-8">
         <ul>
           <li class="list-group mb-8" *ngFor="let sidenav of sidebarMenu">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="{{ sidenav.link }}"
-              class="sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+            <a matRipple [matRippleColor]="'#f7f8f443'" [routerLink]="sidenav.link"
+              class="sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive"
+              (click)="closeSidebar()">
               <i-feather name="{{ sidenav.icon }}" class="feather-base me-16"></i-feather>
               <span class="ps-4">{{ sidenav.menu }}</span>
             </a>
@@ -26,6 +28,9 @@
   <mat-sidenav-content>
     <!-- Header -->
     <mat-toolbar *ngIf="showSidebarHeader" class="header ps-24 pe-24">
+      <button *ngIf="(isHandset$ | async)" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <div class="ms-auto">
         <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
           <div class="d-flex align-items-center">
@@ -37,7 +42,7 @@
         <mat-menu #menu="matMenu" class="profile-dropdown">
           <div class="p-16 mb-4">
             <button mat-menu-item class="fs-16">Account</button>
-            <button mat-menu-item class="fs-16"  (click)="onChangePasswordClick()">Change Password</button>
+            <button mat-menu-item class="fs-16" (click)="onChangePasswordClick()">Change Password</button>
             <button mat-menu-item class="fs-16">My Settings</button>
           </div>
           <hr>

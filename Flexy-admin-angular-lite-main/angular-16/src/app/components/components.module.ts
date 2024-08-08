@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { timesheetComponent } from './timesheet/timesheet.component';
 import { moduleComponent } from './module/module.component';
 import { FormsModule } from '@angular/forms';
-import { projectComponent } from './project/project.component';
+import { ProjectComponent } from './project/project.component';
 //import  { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { projectComponent } from './project/project.component';
     CommonModule,
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
-    projectComponent,
+    ProjectComponent,
   timesheetComponent,
     moduleComponent,
     RegistrationComponent,
@@ -31,8 +31,8 @@ import { projectComponent } from './project/project.component';
     LoginComponent,
     timesheetComponent,
     moduleComponent,
-    projectComponent,
+    ProjectComponent,
    // ChangePasswordComponent,
   ]
 })
-export class ComponentsModule { }
+export class Componentmodule{ }
